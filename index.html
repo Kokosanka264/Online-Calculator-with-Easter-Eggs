@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mój Kalkulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url(obraz.png);
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .kalkulator {
+            width: 450px;
+            height: 550px;
+            background-color: rgb(232, 151, 224);
+            padding: 20px;
+            border-radius: 20px;
+
+
+        }
+
+        #ekran {
+            width: 100%;
+            height: 100px;
+            font-size: 55px;
+            color: white;
+            text-align: right;
+            margin-bottom: 15px;
+            border: none;
+            background-color: rgb(105, 17, 64);
+            border-radius: 120px;
+            box-sizing: border-box;
+            padding: 10px;
+            font-weight: bold;
+            font-family: inherit;
+            padding-right: 30px;
+
+        }
+
+        button {
+            height: 100px;
+            width: 100px;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            margin: 5px;
+            border: rgb(238, 57, 196);
+            border-radius: 10px;
+            cursor: cell;
+            background-color: rgb(139, 73, 124);
+            font-family: inherit;
+        }
+
+        button:hover {
+            background-color: rgb(210, 186, 199);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .przyciski {
+            gap: 5px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        #nies {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            max-width: 300px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        #wow {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            max-width: 300px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kalkulator">
+        <img id="nies" src="67.gif" onclick="ukryjGifa()">
+        <img id="wow" src="69.gif" onclick="ukryjGifa()">
+        <input type="text" id="ekran" readonly>
+        <div>
+            <div class="przyciski">
+                <button onclick="dZ('1')">1</button>
+                <button onclick="dZ('2')">2</button>
+                <button onclick="dZ('3')">3</button>
+                <button onclick="dZ('+')">+</button>
+            </div>
+            <div class="przyciski">
+                <button onclick="dZ('4')">4</button>
+                <button onclick="dZ('5')">5</button>
+                <button onclick="dZ('6')">6</button>
+                <button onclick="dZ('-')">-</button>
+            </div>
+            <div class="przyciski">
+                <button onclick="dZ('7')">7</button>
+                <button onclick="dZ('8')">8</button>
+                <button onclick="dZ('9')">9</button>
+                <button onclick="dZ('*')">*</button>
+            </div>
+            <div class="przyciski">
+                <button onclick="sum()">=</button>
+                <button onclick="dZ('0')">0</button>
+                <button onclick="clea()">C</button>
+                <button onclick="dZ('/')">/</button>
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+    <script>
+        let klik = new Audio('klik2.mp3');
+        let klik3 = new Audio('aniel.mp3');
+        let klik4 = new Audio('devil.mp3');
+        let klik5 = new Audio('disco.mp3');
+        function odtworz() {
+            klik.currentTime = 0;
+            klik.play();
+        }
+        function dZ(wart) {
+            odtworz();
+            let ok = document.getElementById('ekran');
+            ok.value += wart;
+        }
+        function clea() {
+            odtworz();
+            let ok = document.getElementById('ekran');
+            ok.value = "";
+        }
+        function sum() {
+            odtworz();
+            let ok = document.getElementById('ekran');
+            let wynik = eval(ok.value);
+            ok.value = Number(wynik.toFixed(11));
+            let gif = document.getElementById('nies');
+            if (ok.value == 67) {
+                 klik5.currentTime = 0;
+                klik5.play();
+                gif.style.display = "block";
+                setTimeout(function () {
+                    gif.style.display = "none";
+                }, 6000);
+            }
+            let gif1 = document.getElementById('wow');
+            if (ok.value == 69) {
+                gif1.style.display = "block";
+                setTimeout(function () {
+                    gif1.style.display = "none";
+                }, 3000);
+            }
+            if(ok.value==7 || ok.value==777)
+            {
+                klik3.currentTime = 0;
+                klik3.play();
+            }
+            if(ok.value==6 || ok.value==666)
+            {
+                klik4.currentTime = 0;
+                klik4.play();
+            }
+        }
+    </script>
+</body>
+
+</html>
